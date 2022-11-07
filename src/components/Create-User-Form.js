@@ -135,7 +135,7 @@ export default function CreateUserForm(props) {
 								type="button"
 								onClick={() => props.handleCancel()}
 							>
-								Cancel
+								View Data
 							</button>
 						</div>
 					</div>
