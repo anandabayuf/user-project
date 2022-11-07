@@ -1,3 +1,3 @@
-# try this out
+# Try this out
 
-[user-project](user-project-six.vercel.app)
+[user-project-six.vercel.app](user-project-six.vercel.app)
