@@ -1,6 +1,6 @@
 import Loader from "./Loader";
 
-export default function FormCreateUser(props) {
+export default function CreateUserForm(props) {
 	const style = {
 		label: {
 			color: "#3F72AF",

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import FormCreateUser from "../components/Form-Create-User";
+import CreateUserForm from "../components/Create-User-Form";
 
 export default function CreateUserPage() {
 	const [user, setUser] = useState({
@@ -85,7 +85,7 @@ export default function CreateUserPage() {
 				<h3 className="mb-5" style={style.title}>
 					Create User
 				</h3>
-				<FormCreateUser
+				<CreateUserForm
 					user={user}
 					isLoading={isLoading}
 					handleChange={handleChange}

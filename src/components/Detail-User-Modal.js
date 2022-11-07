@@ -6,6 +6,12 @@ export default function DetailUserModal(props) {
 		iconButton: {
 			borderRadius: "50px",
 		},
+		title: {
+			color: "#112D4E",
+		},
+		text: {
+			color: "#3F72AF",
+		},
 	};
 
 	return (
@@ -16,12 +22,15 @@ export default function DetailUserModal(props) {
 			centered
 		>
 			<Modal.Header closeButton>
-				<Modal.Title id="contained-modal-title-vcenter">
+				<Modal.Title
+					id="contained-modal-title-vcenter"
+					style={style.title}
+				>
 					Detail User
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body style={{ padding: "30px" }}>
-				<div className="row">
+				<div className="row" style={style.text}>
 					<div className="col-6">
 						<div className="mb-3">
 							<h6>Username</h6>
@@ -41,7 +50,7 @@ export default function DetailUserModal(props) {
 								</div>
 								<div className="col-auto">
 									<button
-										className="btn btn-outline-dark"
+										className="btn btn-light"
 										style={style.iconButton}
 										onClick={() =>
 											props.handleViewPasswordUser()

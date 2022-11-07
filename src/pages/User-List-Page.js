@@ -102,7 +102,7 @@ export default function UserListPage() {
 					</div>
 					<div className="col-auto">
 						<button
-							className="btn btn-primary"
+							className="btn btn-outline-primary"
 							style={style.button}
 							onClick={() => handleCreateUser()}
 						>
