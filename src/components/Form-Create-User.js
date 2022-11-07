@@ -148,6 +148,13 @@ export default function FormCreateUser(props) {
 								className="btn btn-success"
 								style={style.button}
 								type="submit"
+								disabled={
+									props.user.username === "" ||
+									props.user.password === "" ||
+									props.user.email === "" ||
+									props.user.phone === "" ||
+									props.user.address === ""
+								}
 							>
 								Create
 							</button>
