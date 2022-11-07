@@ -13,9 +13,6 @@ export default function FormCreateUser(props) {
 		button: {
 			borderRadius: "15px",
 		},
-		loader: {
-			color: "#3F72AF",
-		},
 	};
 
 	return (

@@ -4,6 +4,7 @@ export default function UserListTable(props) {
 			borderRadius: "15px",
 		},
 	};
+
 	return (
 		<table className="table">
 			<thead className="text-center">
