@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CreateUserForm from "../components/Create-User-Form";
 
+import { useDispatch } from "react-redux";
+import { addition } from "../utils/actions";
+
 export default function CreateUserPage() {
+	const dispatch = useDispatch();
+
 	const [user, setUser] = useState({
 		username: "",
 		password: "",
@@ -29,15 +34,7 @@ export default function CreateUserPage() {
 		e.preventDefault();
 
 		setTimeout(() => {
-			let users = localStorage.getItem("users");
-
-			if (users === null) {
-				localStorage.setItem("users", JSON.stringify([user]));
-			} else {
-				let newUsers = JSON.parse(users);
-				newUsers.push(user);
-				localStorage.setItem("users", JSON.stringify(newUsers));
-			}
+			dispatch(addition(user));
 
 			navigate("/user-list", {
 				state: {

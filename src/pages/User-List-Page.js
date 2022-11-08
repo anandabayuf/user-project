@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Loader from "../components/Loader";
 import NoData from "../components/No-Data";
 import UserListTable from "../components/User-List-Table";
 import MessageToast from "../components/Message-Toast";
 import DetailUserModal from "../components/Detail-User-Modal";
 
+import { useSelector } from "react-redux";
+
 export default function UserListPage() {
-	const [users, setUsers] = useState([]);
+	const users = useSelector((state) => state.users);
 
 	const [user, setUser] = useState({});
 	const [detailUserModalState, setDetailUserModalState] = useState(false);
-
-	const [isLoading, setIsLoading] = useState(false);
 
 	const [toastState, setToastState] = useState({
 		show: false,
@@ -23,22 +22,7 @@ export default function UserListPage() {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	const getUsers = () => {
-		setIsLoading(true);
-		setTimeout(() => {
-			setIsLoading(false);
-			let userList = localStorage.getItem("users");
-
-			if (userList === null || JSON.parse(userList).length === 0) {
-				//empty
-			} else {
-				setUsers(JSON.parse(userList));
-			}
-		}, 1000);
-	};
-
 	useEffect(() => {
-		getUsers();
 		document.title = "Users List";
 	}, []);
 
@@ -110,9 +94,7 @@ export default function UserListPage() {
 						</button>
 					</div>
 				</div>
-				{isLoading ? (
-					<Loader />
-				) : users.length > 0 ? (
+				{users.length > 0 ? (
 					<UserListTable
 						users={users}
 						handleViewUser={handleViewUser}
