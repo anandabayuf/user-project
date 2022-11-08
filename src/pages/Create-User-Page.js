@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import CreateUserForm from "../components/Create-User-Form";
 
 import { useDispatch } from "react-redux";
-import { addition } from "../utils/actions";
+import { addUser } from "../utils/actions";
 
 export default function CreateUserPage() {
 	const dispatch = useDispatch();
@@ -34,7 +34,7 @@ export default function CreateUserPage() {
 		e.preventDefault();
 
 		setTimeout(() => {
-			dispatch(addition(user));
+			dispatch(addUser(user));
 
 			navigate("/user-list", {
 				state: {

@@ -1,6 +1,6 @@
-export const addition = (user) => {
+export const addUser = (user) => {
 	return {
-		type: "ADDITION",
+		type: "ADD_USER",
 		payload: user,
 	};
 };
