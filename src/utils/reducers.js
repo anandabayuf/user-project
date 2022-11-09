@@ -1,4 +1,4 @@
-const usersReducer = (state = [], action) => {
+export const usersReducer = (state = [], action) => {
 	switch (action.type) {
 		case "ADD_USER":
 			return [...state, action.payload];
@@ -7,4 +7,14 @@ const usersReducer = (state = [], action) => {
 	}
 };
 
-export default usersReducer;
+export const messageToastReducer = (
+	state = { show: false, title: "", message: "" },
+	action
+) => {
+	switch (action.type) {
+		case "SHOW_HIDE_MESSAGE_TOAST":
+			return action.payload;
+		default:
+			return state;
+	}
+};

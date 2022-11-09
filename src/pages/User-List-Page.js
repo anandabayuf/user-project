@@ -2,22 +2,17 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import NoData from "../components/No-Data";
 import UserListTable from "../components/User-List-Table";
-import MessageToast from "../components/Message-Toast";
 import DetailUserModal from "../components/Detail-User-Modal";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { showMessageToast } from "../utils/actions";
 
 export default function UserListPage() {
+	const dispatch = useDispatch();
 	const users = useSelector((state) => state.users);
 
 	const [user, setUser] = useState({});
 	const [detailUserModalState, setDetailUserModalState] = useState(false);
-
-	const [toastState, setToastState] = useState({
-		show: false,
-		title: "",
-		message: "",
-	});
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -47,15 +42,16 @@ export default function UserListPage() {
 
 	const handleAfterCreateUser = () => {
 		if (location.state) {
-			setToastState(location.state.toastState);
+			dispatch(showMessageToast(location.state.toastState));
 			window.history.replaceState({}, document.title);
 			setTimeout(() => {
-				setToastState({
-					...toastState,
-					show: false,
-					title: "",
-					message: "",
-				});
+				dispatch(
+					showMessageToast({
+						show: false,
+						title: "",
+						message: "",
+					})
+				);
 			}, 5000);
 		}
 	};
@@ -105,10 +101,6 @@ export default function UserListPage() {
 					</div>
 				)}
 			</div>
-			<MessageToast
-				toastState={toastState}
-				setToastState={setToastState}
-			/>
 			{detailUserModalState && (
 				<DetailUserModal
 					user={user}
